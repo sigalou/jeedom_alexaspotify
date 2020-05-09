@@ -4,7 +4,8 @@ require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
 class alexaspotify extends eqLogic {
 	
 	public static function cron($_eqlogic_id = null) {
-		$r = new Cron\CronExpression('*/15 * * * *', new Cron\FieldFactory);// boucle refresh
+		$deamon_info = alexaapi::deamon_info();
+		$r = new Cron\CronExpression('*/17 * * * *', new Cron\FieldFactory);// boucle refresh
 		if ($r->isDue() && $deamon_info['state'] == 'ok') {
 			$eqLogics = ($_eqlogic_id !== null) ? array(eqLogic::byId($_eqlogic_id)) : eqLogic::byType('alexaspotify', true);
 			foreach ($eqLogics as $alexaspotify) {
@@ -67,7 +68,7 @@ class alexaspotify extends eqLogic {
 		$device=str_replace("_player", "", $this->getConfiguration('serial'));
 
 		if ($widgetPlayer) {	// Refresh d'un player
-			$url = network::getNetworkAccess('internal'). "/plugins/alexaapi/core/php/jeealexaapi.php?apikey=".jeedom::getApiKey('alexaapi')."&nom=refreshPlayer"; // Envoyer la commande Refresh 
+			$url = network::getNetworkAccess('internal'). "/plugins/alexaapi/core/php/jeeAlexaapi.php?apikey=".jeedom::getApiKey('alexaapi')."&nom=refreshPlayer"; // Envoyer la commande Refresh 
 			$ch = curl_init($url);
 			$data = array(
 				'deviceSerialNumber' => $device,
