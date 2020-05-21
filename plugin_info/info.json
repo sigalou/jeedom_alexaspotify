@@ -13,7 +13,7 @@
   "hasDependency" : 0,
   "hasOwnDeamon" : 0,
 	"language" : ["fr_FR","en_US"],
-	"compatibility" : ["miniplus","smart","rpi","docker","diy","mobile"],
+	"compatibility" : ["miniplus","smart","rpi","docker","diy","mobile","V4"],
 	"maxDependancyInstallTime" : 0
 }
 
