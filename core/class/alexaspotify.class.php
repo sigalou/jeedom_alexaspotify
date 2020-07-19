@@ -412,7 +412,7 @@ class alexaspotifyCmd extends cmd {
 			$request_http->exec(0.1, 1);
 			return;
 		}
-		$result = $request_http->exec($this->getConfiguration('timeout', 3), $this->getConfiguration('maxHttpRetry', 3));//Time out à 3s 3 essais
+		$result = $request_http->exec(10,3);//Time out à 10s 3 essais Modifié 04/07/2020
 		if (!$result) throw new Exception(__('Serveur injoignable', __FILE__));
 		// On traite la valeur de resultat (dans le cas de whennextalarm par exemple)
 		$resultjson = json_decode($result, true);
@@ -430,7 +430,7 @@ class alexaspotifyCmd extends cmd {
 							flush();
 							}	
 						log::add('alexaspotify', 'debug', '**On relance '.$request);
-						$result = $request_http->exec($this->getConfiguration('timeout', 2), $this->getConfiguration('maxHttpRetry', 3));
+						$result = $request_http->exec(10,3);//Time out à 10s 3 essais Modifié 04/07/2020
 						if (!result) throw new Exception(__('Serveur injoignable', __FILE__));
 						$jsonResult = json_decode($json, true);
 						if (!empty($jsonResult)) throw new Exception(__('Echec de l\'execution: ', __FILE__) . '(' . $jsonResult['title'] . ') ' . $jsonResult['detail']);
