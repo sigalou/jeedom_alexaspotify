@@ -95,10 +95,12 @@ class alexaspotify extends eqLogic
             $json = file_get_contents("http://" . config::byKey('internalAddr') . ":3456/playlists?device=" . $device);
             $json = json_decode($json, true);
             $ListeDesPlaylists = [];
-            foreach ($json as $key => $value) {
-                foreach ($value as $key2 => $playlist) {
-                    foreach ($playlist as $key3 => $value2) {
-                        $ListeDesPlaylists[] = $value2['playlistId'] . '|' . $value2['title'] . " (" . $value2['trackCount'] . ")";
+            if (is_array($json)) {
+                foreach ($json as $key => $value) {
+                    foreach ($value as $key2 => $playlist) {
+                        foreach ($playlist as $key3 => $value2) {
+                            $ListeDesPlaylists[] = $value2['playlistId'] . '|' . $value2['title'] . " (" . $value2['trackCount'] . ")";
+                        }
                     }
                 }
             }
