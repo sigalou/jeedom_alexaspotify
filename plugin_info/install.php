@@ -18,12 +18,13 @@
 
 require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 
-function alexaspotify_update() {
-	alexaspotify::scanAmazonAlexa();
-	foreach (eqLogic::byType('alexaspotify') as $alexaspotify) {
-		$alexaspotify->save();
-    	}
-	//message::removeAll('Téléinfo');
+function alexaspotify_update()
+{
+    alexaspotify::scanAmazonAlexa();
+    foreach (eqLogic::byType('alexaspotify') as $alexaspotify) {
+        $alexaspotify->save();
+    }
+    //message::removeAll('Téléinfo');
     message::add('alexaspotify', 'Mise à jour du plugin Alexa-API terminée.', null, null);
 
 }
