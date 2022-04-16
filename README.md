@@ -1,1 +1,1 @@
-# jeedom_alexaspotify
+http://jeedom.sigalou-domotique.fr/alexa-api-changelog
