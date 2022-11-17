@@ -120,12 +120,12 @@ foreach ($eqLogics as $eqLogic) {
 
                             if (($eqLogic->getStatus('online') != 'true')) {
                                 //echo '<i class="fas fa-power-off" style="color: red;text-shadow: 4px 4px 4px #ccc;float:right" title="Offline"></i>';
-                                echo '<span class="badge badge-danger">Off</span>';
+                                echo '<span class="badge-alexaapi badge-danger">Off</span>';
                             } elseif (($eqLogic->getStatus('Playing') == 'true')) {
                                 echo '<i class="fas loisir-musical7" style="color: #2c8af6;text-shadow: 4px 4px 4px #ccc;float:right" title="Playing"></i>';
                             } else {
                                 if ($interval->format('%a') < 1) {
-                                    echo '<span class="badge badge-success">Nouveau</span>';
+                                    echo '<span class="badge-alexaapi badge-success">Nouveau</span>';
                                 }
                             }
 
